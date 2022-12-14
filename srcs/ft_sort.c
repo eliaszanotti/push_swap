@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:28:28 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/07 17:29:13 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 19:03:41 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_sort(t_stack *stack)
 		i = stack->size;
 		while (i >= 0)
 		{
-			if ((stack->bit & stack->tab[stack->size]) == stack->bit)
+			if ((stack->bit & stack->tab[stack->size]) == 0)
 				ft_push_b(stack);
 			else
 				ft_reverse_a(stack);

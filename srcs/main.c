@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/07 17:31:43 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 19:05:45 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,10 @@ int	main(int argc, char **argv)
 	stack = ft_init_stack(argv + 1);
 	ft_sort_int_tab(stack);
 	ft_replace_index(stack);
+	//ft_log(stack);
 	ft_sort(stack);
-	ft_log(stack);
-
-	/*ft_log(stack);
-	ft_sort(stack);
-	ft_log(stack);*/
-
-	/*int a = 10, b = 2;
-    printf("a = %d, b = %d\n", a, b);
-    printf("a & b = %d\n", a & b);*/
+	//ft_log(stack);
+	free(stack->tab);
+	free(stack->tab_temp);
+	free(stack);
 }

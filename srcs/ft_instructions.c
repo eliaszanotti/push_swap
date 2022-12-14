@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:40:27 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/07 17:28:08 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/14 18:51:12 by event01          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_is_sorted(int *tab, int size)
 	i = 0;
 	while (i < size)
 	{
-		if (tab[i] > tab[i + 1])
+		if (tab[i] < tab[i + 1])
 			return (0);
 		i++;
 	}
