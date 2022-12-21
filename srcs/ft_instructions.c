@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:40:27 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/21 14:11:56 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/21 14:50:47 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	ft_is_sorted(int *tab, int size)
 	int	i;
 
 	i = 0;
-    // add a check to check if b is empty
+	// add a check to check if b is empty
 	while (i < size)
-    {
+	{
 		if (tab[i] < tab[i + 1])
-            return (0);
-        i++;
+			return (0);
+		i++;
 	}
-    return (1);
+	return (1);
 }

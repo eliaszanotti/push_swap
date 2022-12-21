@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:19:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/07 16:29:24 by ezanotti         ###   ########lyon.fr   */
+/*   Updated: 2022/12/21 14:46:12 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	ft_sort_int_tab(t_stack *stack)
 		{
 			temp = stack->tab_temp[j];
 			stack->tab_temp[j] = stack->tab_temp[j - 1];
-			stack->tab_temp[j - 1] = temp;
-			j--;
+			stack->tab_temp[j-- - 1] = temp;
 		}
 		i++;
 	}
@@ -59,17 +58,26 @@ void	ft_replace_index(t_stack *stack)
 {
 	int	i;
 	int	j;
+	int	temp;
 
-	i = 0;
-	while (i <= stack->size)
+	i = stack->size;
+	while (i >= 0)
 	{
 		j = 0;
 		while (j <= stack->size && stack->tab[i] != stack->tab_temp[j])
 			j++;
-		stack->tab[i++] = j;
+		stack->tab[i--] = j;
 	}
-	i = 0;
-	while (i <= stack->size)
-		stack->tab_temp[i++] = 0;
+	i = stack->size;
+	while (i >= 0)
+		stack->tab_temp[i--] = 0;
 	stack->size_temp = -1;
+	i = 0;
+	j = stack->size;
+	while (i < j)
+	{
+		temp = stack->tab[i];
+		stack->tab[i++] = stack->tab[j];
+		stack->tab[j--] = temp;
+	}
 }
