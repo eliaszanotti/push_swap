@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/20 11:31:39 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/21 12:17:44 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ void	ft_push_a(t_stack *stack);
 void	ft_push_b(t_stack *stack);
 void	ft_reverse_a(t_stack *stack);
 void	ft_sort(t_stack *stack);
+
+void    ft_log(t_stack *stack);
 
 #endif
