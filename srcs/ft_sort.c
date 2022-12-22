@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 17:28:28 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/21 14:49:12 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 13:44:39 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_sort(t_stack *stack)
 	int	index;
 
 	index = -1;
-	while (!ft_is_sorted(stack->tab, stack->size))
+	while (!ft_is_sorted(stack))
 	{
 		index++;
 		i = stack->size;
@@ -35,3 +35,13 @@ void	ft_sort(t_stack *stack)
 		stack->bit *= 2;
 	}
 }
+
+/*void	ft_get_sort(stack *stack)
+{
+	if (stack->size > 3)
+		ft_sort(stack);	
+	else
+		ft_sort_three(stack);
+
+
+}*/

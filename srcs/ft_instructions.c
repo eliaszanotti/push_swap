@@ -6,11 +6,12 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:40:27 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/21 14:50:47 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 13:44:12 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	ft_push_a(t_stack *stack)
 {
@@ -41,17 +42,15 @@ void	ft_reverse_a(t_stack *stack)
 	ft_printf("ra\n");
 }
 
-int	ft_is_sorted(int *tab, int size)
+int	ft_is_sorted(t_stack *stack)
 {
 	int	i;
 
-	i = 0;
-	// add a check to check if b is empty
-	while (i < size)
-	{
-		if (tab[i] < tab[i + 1])
+	i = -1;
+	if (stack->size_temp != -1)
+		return (0);
+	while (++i < stack->size)
+		if (stack->tab[i] < stack->tab[i + 1])
 			return (0);
-		i++;
-	}
 	return (1);
 }

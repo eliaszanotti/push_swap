@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/21 13:22:35 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 13:24:26 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ int	main(int argc, char **argv)
 	free(stack->tab);
 	free(stack->tab_temp);
 	free(stack);
+	return (0);
 }
