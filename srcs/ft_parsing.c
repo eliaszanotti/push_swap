@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:19:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 15:09:20 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 16:33:08 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int	ft_int_checker(char **argv)
 int	ft_unique_checker(t_stack *stack)
 {
 	int	i;
-	int j;
-	
+	int	j;
+
 	i = -1;
 	while (stack->tab[++i])
 	{
@@ -44,24 +44,19 @@ int	ft_unique_checker(t_stack *stack)
 	return (0);
 }
 
-t_stack	*ft_init_stack(int argc, char **argv)
+t_stack	*ft_init_stack(char **argv)
 {
 	t_stack	*stack;
 	int		len;
 
-	stack = malloc(sizeof(t_stack));
-	if (argc == 2)
-	{
-		argv = ft_split(argv[0], ' ');
-		if (!argv)
-			return (NULL);
-	}
 	if (ft_int_checker(argv))
+		return (NULL);
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
 		return (NULL);
 	len = 0;
 	while (argv[len])
 		len++;
-	stack->bit = 1; // peut etre def apres pour les 25 lignes
 	stack->size = len - 1;
 	stack->tab = malloc(sizeof(int) * len);
 	stack->tab_temp = malloc(sizeof(int) * len);
@@ -70,7 +65,10 @@ t_stack	*ft_init_stack(int argc, char **argv)
 	{
 		stack->tab[len] = ft_atoi(*argv);
 		stack->tab_temp[len++] = ft_atoi(*argv++);
+		//free(*argv);
 	}
+
+	//free(argv);
 	return (stack);
 }
 

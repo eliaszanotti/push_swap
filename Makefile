@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 18:32:40 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/07 17:31:33 by ezanotti         ###   ########lyon.fr    #
+#    Updated: 2022/12/22 15:48:23 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ RM		= rm -rf
 # COMPILATION
 all :		${NAME}
 
-%.o: %.c	${DIR}ft_printf.h ${DIR}libft.h ${DIR_SRC}push_swap.h Makefile
+%.o: %.c	${DIR}ft_printf.h ${DIR}libft.h ${DIR_SRC}push_swap.h
 			${CC} ${CFLAGS} -I ${DIR} -I ${DIR_SRC} -c $< -o ${<:.c=.o} 
 
 ${NAME}:	${OBJS}

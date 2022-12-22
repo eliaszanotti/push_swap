@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 15:08:25 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 16:34:40 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,30 @@ void	ft_log(t_stack *stack)
 	printf("-- END --\n");
 }
 
+char	**ft_get_argv(char *str)
+{
+	char	**new_argv;
+
+	new_argv = ft_split(str, ' ');
+	if (!new_argv)
+		return (NULL);
+	return (new_argv);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack;
+	char	**new_argv;
 
 	if (argc <= 1)
 		return (0);
-	stack = ft_init_stack(argc, argv + 1);
+	if (argc == 2)
+	{
+		new_argv = ft_get_argv(argv[1]);
+		stack = ft_init_stack(new_argv);
+	}
+	else
+		stack = ft_init_stack(argv + 1);
 	if (!stack)
 		return (1);
 	if (ft_unique_checker(stack))
