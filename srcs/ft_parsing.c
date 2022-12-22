@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:19:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 16:33:08 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 16:55:30 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,7 @@ t_stack	*ft_init_stack(char **argv)
 	{
 		stack->tab[len] = ft_atoi(*argv);
 		stack->tab_temp[len++] = ft_atoi(*argv++);
-		//free(*argv);
 	}
-
-	//free(argv);
 	return (stack);
 }
 
