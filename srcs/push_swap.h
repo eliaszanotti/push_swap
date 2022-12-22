@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 13:44:21 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 15:09:37 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_stack
 	int	bit;
 }	t_stack;
 
-t_stack	*ft_init_stack(char **argv);
+t_stack	*ft_init_stack(int argc, char **argv);
+int		ft_unique_checker(t_stack *stack);
 void	ft_sort_int_tab(t_stack *stack);
 void	ft_replace_index(t_stack *stack);
 int		ft_is_sorted(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 13:24:26 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/22 15:08:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ int	main(int argc, char **argv)
 
 	if (argc <= 1)
 		return (0);
-	stack = ft_init_stack(argv + 1);
+	stack = ft_init_stack(argc, argv + 1);
+	if (!stack)
+		return (1);
+	if (ft_unique_checker(stack))
+		return (1);
 	ft_sort_int_tab(stack);
 	ft_replace_index(stack);
 	ft_sort(stack);
