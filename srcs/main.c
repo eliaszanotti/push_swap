@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 16:53:26 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/28 18:00:51 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,6 @@
 	printf("-- END --\n");
 }*/
 
-void	ft_free_all(char **new_argv, t_stack *stack, int i)
-{
-	if (i == 0)
-	{
-		while (new_argv[i])
-			free(new_argv[i++]);
-		free(new_argv);
-	}
-	else
-	{
-		free(stack->tab);
-		free(stack->tab_temp);
-		free(stack);
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -55,20 +40,23 @@ int	main(int argc, char **argv)
 	char	**new_argv;
 
 	if (argc <= 1)
-		return (1);
+		return (0);
 	if (argc == 2)
 	{
 		new_argv = ft_split(argv[1], ' ');
 		stack = ft_init_stack(new_argv);
-		ft_free_all(new_argv, NULL, 0);
+		ft_free_argv(new_argv);
 	}
 	else
 		stack = ft_init_stack(argv + 1);
 	if (!stack || ft_unique_checker(stack))
-		return (1);
+	{
+		ft_free_stack(stack);
+		return (ft_error(1));
+	}
 	ft_sort_int_tab(stack);
 	ft_replace_index(stack);
 	ft_sort(stack);
-	ft_free_all(NULL, stack, 1);
+	ft_free_stack(stack);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:40:27 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 13:44:12 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/28 17:33:07 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,4 @@ void	ft_reverse_a(t_stack *stack)
 		stack->tab[i] = stack->tab[i - 1];
 	stack->tab[i] = last;
 	ft_printf("ra\n");
-}
-
-int	ft_is_sorted(t_stack *stack)
-{
-	int	i;
-
-	i = -1;
-	if (stack->size_temp != -1)
-		return (0);
-	while (++i < stack->size)
-		if (stack->tab[i] < stack->tab[i + 1])
-			return (0);
-	return (1);
 }

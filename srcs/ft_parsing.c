@@ -6,43 +6,11 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:19:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 16:55:30 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/28 17:17:16 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_int_checker(char **argv)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (argv[++i])
-	{
-		j = -1;
-		while (argv[i][++j])
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != ' ')
-				return (1);
-	}
-	return (0);
-}
-
-int	ft_unique_checker(t_stack *stack)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (stack->tab[++i])
-	{
-		j = i;
-		while (stack->tab[++j])
-			if (stack->tab[i] == stack->tab[j])
-				return (1);
-	}	
-	return (0);
-}
 
 t_stack	*ft_init_stack(char **argv)
 {

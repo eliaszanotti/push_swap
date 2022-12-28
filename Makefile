@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 18:32:40 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/22 16:41:44 by elias            ###   ########.fr        #
+#    Updated: 2022/12/28 18:01:41 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ S_LIB	= ${DIR}ft_isalpha.c ${DIR}ft_isdigit.c ${DIR}ft_isalnum.c \
 		${DIR}ft_lstmap.c ${DIR}ft_printf.c ${DIR}ft_printf_utils.c
 
 S_SRC	= ${DIR_SRC}main.c ${DIR_SRC}ft_parsing.c ${DIR_SRC}ft_instructions.c \
-		${DIR_SRC}ft_sort.c
+		${DIR_SRC}ft_sort.c ${DIR_SRC}ft_checker.c ${DIR_SRC}ft_error.c \
+		${DIR_SRC}ft_free.c
 
 OBJS	= ${S_LIB:.c=.o} ${S_SRC:.c=.o}
 
@@ -37,7 +38,7 @@ NAME	= push_swap
 DIR		= libft/
 DIR_SRC = srcs/
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror
 RM		= rm -rf
 
 # COMPILATION
