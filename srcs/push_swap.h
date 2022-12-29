@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/28 18:02:57 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/29 14:25:47 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_is_sorted(t_stack *stack);
 //ft_error.c
 int		ft_error(int error_code);
 //ft_free.c
-void	ft_free_stack(t_stack *stack);
+void	*ft_free_stack(t_stack *stack);
 void	ft_free_argv(char **argv);
 //ft_instructions.c
 void	ft_push_a(t_stack *stack);
