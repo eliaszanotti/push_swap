@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 18:01:09 by elias             #+#    #+#             */
-/*   Updated: 2022/12/28 18:01:26 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/29 13:53:10 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	ft_free_argv(char **argv)
 	int	i;
 
 	i = 0;
-	while (argv[i])
-		free(argv[i++]);
-	free(argv);
+	if (argv)
+	{
+		while (argv[i])
+			free(argv[i++]);
+		free(argv);
+	}
 }

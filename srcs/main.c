@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/28 18:26:05 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/29 13:56:52 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,12 @@ int	main(int argc, char **argv)
 	}
 	else
 		stack = ft_init_stack(argv + 1);
-	if (!stack || ft_unique_checker(stack))
+	if (!stack)
+		return (ft_error(1));
+	if (ft_unique_checker(stack))
 	{
 		ft_free_stack(stack);
-		return (ft_error(1));
+		return (ft_error(2));
 	}
 	ft_sort_int_tab(stack);
 	ft_replace_index(stack);

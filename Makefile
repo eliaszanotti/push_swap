@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 18:32:40 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/28 18:01:41 by elias            ###   ########.fr        #
+#    Updated: 2022/12/29 14:02:18 by elias            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ S_LIB	= ${DIR}ft_isalpha.c ${DIR}ft_isdigit.c ${DIR}ft_isalnum.c \
 		${DIR}ft_putnbr_fd.c ${DIR}ft_lstnew.c ${DIR}ft_lstadd_front.c \
 		${DIR}ft_lstsize.c ${DIR}ft_lstlast.c ${DIR}ft_lstadd_back.c \
 		${DIR}ft_lstdelone.c ${DIR}ft_lstclear.c ${DIR}ft_lstiter.c \
-		${DIR}ft_lstmap.c ${DIR}ft_printf.c ${DIR}ft_printf_utils.c
+		${DIR}ft_lstmap.c ${DIR}ft_printf.c ${DIR}ft_printf_utils.c \
+		${DIR}ft_strcmp.c
 
 S_SRC	= ${DIR_SRC}main.c ${DIR_SRC}ft_parsing.c ${DIR_SRC}ft_instructions.c \
 		${DIR_SRC}ft_sort.c ${DIR_SRC}ft_checker.c ${DIR_SRC}ft_error.c \

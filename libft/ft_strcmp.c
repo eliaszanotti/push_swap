@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 17:11:39 by elias             #+#    #+#             */
-/*   Updated: 2022/12/29 13:57:48 by elias            ###   ########.fr       */
+/*   Created: 2022/12/29 13:33:15 by elias             #+#    #+#             */
+/*   Updated: 2022/12/29 13:34:25 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	ft_error(int error_code)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	if (error_code)
-		ft_printf("\e[1;31m[ERROR]\e[0m ");
-	if (error_code == 1)
-		ft_printf("Incorrect arguments (arguments are not valid integers)\n");
-	if (error_code == 2)
-		ft_printf("Arguments are not unique\n");
-	return (error_code);
+	unsigned char	*copy_s1;
+	unsigned char	*copy_s2;
+
+	copy_s1 = (unsigned char *)s1;
+	copy_s2 = (unsigned char *)s2;
+	while (*copy_s1 && *copy_s2 && *copy_s1 == *copy_s2)
+	{
+		copy_s1++;
+		copy_s2++;
+	}
+	return (*copy_s1 - *copy_s2);
 }

@@ -6,7 +6,7 @@
 /*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 17:16:15 by elias             #+#    #+#             */
-/*   Updated: 2022/12/28 17:54:36 by elias            ###   ########.fr       */
+/*   Updated: 2022/12/29 13:42:58 by elias            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	ft_int_checker(char **argv)
 	{
 		j = -1;
 		while (argv[i][++j])
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != ' ')
+			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != ' ' \
+					&& argv[i][j] != '-')
 				return (1);
 	}
 	return (0);
