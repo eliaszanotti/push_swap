@@ -6,13 +6,13 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 16:03:41 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 15:33:13 by elias            ###   ########.fr       */
+/*   Updated: 2022/11/16 14:56:58 by ezanotti         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_mallocsize(char *s, char c)
+static size_t	ft_mallocsize(char const *s, char c)
 {
 	size_t	count;
 
@@ -42,7 +42,7 @@ static char	**ft_freeall(char **tab, int max)
 	return (0);
 }
 
-static char	**ft_splitstr(char *s, char c, char **tab, size_t mallocsize)
+static char	**ft_splitstr(char const *s, char c, char **tab, size_t mallocsize)
 {
 	int		i;
 	size_t	i_tab;
@@ -65,7 +65,7 @@ static char	**ft_splitstr(char *s, char c, char **tab, size_t mallocsize)
 	return (tab);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	size_t	mallocsize;

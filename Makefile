@@ -5,58 +5,89 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/06 18:32:40 by ezanotti          #+#    #+#              #
-#    Updated: 2022/12/29 14:12:46 by elias            ###   ########.fr        #
+#    Created: 2023/02/06 15:45:24 by ezanotti          #+#    #+#              #
+#    Updated: 2023/02/06 19:25:10 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# SOURCES
-S_LIB	= ${DIR}ft_isalpha.c ${DIR}ft_isdigit.c ${DIR}ft_isalnum.c \
-		${DIR}ft_isascii.c ${DIR}ft_isprint.c ${DIR}ft_strlen.c \
-		${DIR}ft_memset.c ${DIR}ft_bzero.c ${DIR}ft_memcpy.c \
-		${DIR}ft_memmove.c ${DIR}ft_strlcpy.c ${DIR}ft_strlcat.c \
-		${DIR}ft_toupper.c ${DIR}ft_tolower.c ${DIR}ft_strchr.c \
-		${DIR}ft_strrchr.c ${DIR}ft_strncmp.c ${DIR}ft_memchr.c \
-		${DIR}ft_memcmp.c ${DIR}ft_strnstr.c ${DIR}ft_atoi.c \
-		${DIR}ft_calloc.c ${DIR}ft_strdup.c ${DIR}ft_substr.c \
-		${DIR}ft_strjoin.c ${DIR}ft_strtrim.c ${DIR}ft_split.c \
-		${DIR}ft_itoa.c ${DIR}ft_strmapi.c ${DIR}ft_striteri.c \
-		${DIR}ft_putchar_fd.c ${DIR}ft_putstr_fd.c ${DIR}ft_putendl_fd.c \
-		${DIR}ft_putnbr_fd.c ${DIR}ft_lstnew.c ${DIR}ft_lstadd_front.c \
-		${DIR}ft_lstsize.c ${DIR}ft_lstlast.c ${DIR}ft_lstadd_back.c \
-		${DIR}ft_lstdelone.c ${DIR}ft_lstclear.c ${DIR}ft_lstiter.c \
-		${DIR}ft_lstmap.c ${DIR}ft_printf.c ${DIR}ft_printf_utils.c \
-		${DIR}ft_strcmp.c ${DIR}ft_atoi_secure.c
+S_SRC	= main.c					\
+		${D_PRT}ft_printf.c			\
+		${D_PRT}ft_printf_utils.c	\
 
-S_SRC	= ${DIR_SRC}main.c ${DIR_SRC}ft_parsing.c ${DIR_SRC}ft_instructions.c \
-		${DIR_SRC}ft_sort.c ${DIR_SRC}ft_checker.c ${DIR_SRC}ft_error.c \
-		${DIR_SRC}ft_free.c
 
-OBJS	= ${S_LIB:.c=.o} ${S_SRC:.c=.o}
+
+S_TMP	= ${addprefix ${D_SRC}, ${S_SRC}}
+O_SRC	= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
 
 # VARIABLES
 NAME	= push_swap
-DIR		= libft/
-DIR_SRC = srcs/
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror
+
+# FLAGS
+MAKEFLAGS += --no-print-directory
+CFLAGS	= -Wall -Wextra -Werror -g3
+LIBFT 	= -L ./libft -lft 
+
+# COMMANDS
 RM		= rm -rf
+PRINT	= @printf
 
-# COMPILATION
-all :		${NAME}
+# DIRECTORIES
+D_OBJS	= .objs/
+D_INC	= includes/
+D_LIB	= libft/
+D_UTILS	= utils/
+D_PRT	= printf/
+D_SRC	= srcs/
 
-%.o: %.c	${DIR}ft_printf.h ${DIR}libft.h ${DIR_SRC}push_swap.h
-			${CC} ${CFLAGS} -I ${DIR} -I ${DIR_SRC} -c $< -o ${<:.c=.o} 
+# COLORS
+RED		= \033[1;31m
+GREEN	= \033[1;32m
+YELLOW	= \033[1;33m
+BLUE	= \033[1;34m
+CYAN	= \033[1;36m
+DEFAULT	= \033[0m
+SUPPR	= \r\033[2K
 
-${NAME}:	${OBJS}
-			${CC} ${OBJS} -o ${NAME} ${MLX}
+all:	${NAME}
 
-clean :
-			${RM} ${OBJS}
+${D_OBJS}%.o: %.c	${D_INC}push_swap.h Makefile
+		@mkdir -p $(shell dirname $@)
+		@${PRINT} "${YELLOW}${SUPPR}Creating ${NAME}'s objects : $@"
+		@${CC} ${CFLAGS} -I ${D_LIB} -I ${D_INC} -c $< -o $@ 
 
-fclean :	clean
-			${RM} ${NAME} 
+${NAME}:ascii lib ${O_SRC}
+		@${PRINT} "${GREEN}${SUPPR}Creating ${NAME}'s objects : DONE\n"
+		@${PRINT} "${YELLOW}Compiling ${NAME}...${DEFAULT}"
+		@${CC} ${O_SRC} -o ${NAME} ${LIBFT}
+		@${PRINT} "${GREEN}${SUPPR}Compiling ${NAME} : DONE ${DEFAULT}\n\n"
 
-re :		fclean all
+lib:
+		@make -C ./libft
 
-.PHONY : all re clean fclean
+ascii:
+		@${PRINT} "$$ASCII\n"
+
+clean:	ascii
+		@${PRINT} "${RED}Deleting objects : DONE\n"
+		@${RM} ${D_OBJS}
+
+fclean:	clean 
+		@${PRINT} "${RED}Cleaning libft : DONE\n"
+		@${MAKE} fclean -C ./libft
+		@${PRINT} "${RED}Deleting executable : DONE${DEFAULT}\n\n"
+		@${RM} ${NAME}
+
+re:		fclean all
+
+define ASCII 
+${CYAN} _____ _____ _____ _____       _____ _ _ _ _____ _____
+|  _  |  |  |   __|  |  |_____|   __| | | |  _  |  _  |
+|   __|  |  |__   |     |_____|__   | | | |     |   __|
+|__|  |_____|_____|__|__|     |_____|_____|__|__|__|
+${DEFAULT}
+endef
+
+export	ASCII
+
+.PHONY:	all re clean fclean lib ascii

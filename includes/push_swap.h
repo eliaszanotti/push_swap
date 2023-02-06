@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/29 14:25:47 by elias            ###   ########.fr       */
+/*   Updated: 2023/02/06 19:22:48 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 
-typedef struct s_stack
+typedef struct s_args
 {
 	int	*tab;
 	int	*tab_temp;
@@ -25,7 +25,7 @@ typedef struct s_stack
 	int	bit;
 }	t_stack;
 
-//ft_checker.c
+/*//ft_checker.c
 int		ft_int_checker(char **argv);
 int		ft_unique_checker(t_stack *stack);
 int		ft_is_sorted(t_stack *stack);
@@ -45,6 +45,6 @@ void	ft_replace_index(t_stack *stack);
 //ft_sort.c
 void	ft_sort(t_stack *stack);
 
-void	ft_log(t_stack *stack);
+void	ft_log(t_stack *stack);*/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/29 13:56:52 by elias            ###   ########.fr       */
+/*   Updated: 2023/02/06 16:21:28 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,32 @@
 	printf("-- END --\n");
 }*/
 
+int	ft_struct_init(t_args *args, char **argv)
+{
+	
+	
+
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	t_stack	*stack;
-	char	**new_argv;
+	t_args	args;
 
-	if (argc <= 1)
-		return (0);
-	if (argc == 2)
-	{
-		new_argv = ft_split(argv[1], ' ');
-		stack = ft_init_stack(new_argv);
-		ft_free_argv(new_argv);
-	}
-	else
-		stack = ft_init_stack(argv + 1);
-	if (!stack)
-		return (ft_error(1));
-	if (ft_unique_checker(stack))
-	{
-		ft_free_stack(stack);
-		return (ft_error(2));
-	}
-	ft_sort_int_tab(stack);
-	ft_replace_index(stack);
-	ft_sort(stack);
-	ft_free_stack(stack);
+	if (argc == 1)
+		return (1);
+	
+	if (ft_struct_init(&args, argv))
+		return (ft_error(1)); //TODO change to msg error
+	
+
+
+
+
+
+
+
+
+
 	return (0);
 }
