@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/06 19:59:33 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/06 20:34:46 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,7 @@ int	ft_add_to_stack(t_args *args, char *current)
 		if (!new)
 			return (-1); //TODO
 		ft_stackadd_back(&args->stack, new);
-
-		printf("%s\n", splited[i]);
-		
 	}	
-
-
-
-
-	(void)args;
-
 	return (0);
 }
 
@@ -67,17 +58,13 @@ int	ft_struct_init(t_args *args, char **argv)
 {
 	t_stack	*stack;
 	int		i;
-	int		current;
 
 	stack = NULL;
 	args->stack = stack;
 	i = 0;
-	while (argv[i])
-	{
-		current = ft_add_to_stack(args, argv[i++]);
-		if (current == -1)
+	while (argv[++i])
+		if (ft_add_to_stack(args, argv[i]))
 			return (2); //TODO
-	}
 	return (0);
 }
 
@@ -87,7 +74,6 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (1);
-	
 	if (ft_struct_init(&args, argv))
 		return (1); //TODO change to msg error
 
