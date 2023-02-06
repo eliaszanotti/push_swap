@@ -6,13 +6,14 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:45:24 by ezanotti          #+#    #+#              #
-#    Updated: 2023/02/06 19:25:10 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/02/06 20:04:05 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 S_SRC	= main.c					\
 		${D_PRT}ft_printf.c			\
 		${D_PRT}ft_printf_utils.c	\
+		${D_UTILS}ft_stack_utils.c	\
 
 
 

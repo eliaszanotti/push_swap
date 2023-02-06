@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/06 16:21:28 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/06 19:59:33 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,51 @@
 	printf("-- END --\n");
 }*/
 
+
+int	ft_add_to_stack(t_args *args, char *current)
+{
+	char	**splited;
+	t_stack	*new;
+	int		i;
+
+	splited = ft_split(current, ' ');
+	if (!splited)
+		return (-1); //TODO
+	i = -1;
+	while (splited[++i])
+	{
+		new = ft_stacknew(ft_atoi(splited[i]));
+		if (!new)
+			return (-1); //TODO
+		ft_stackadd_back(&args->stack, new);
+
+		printf("%s\n", splited[i]);
+		
+	}	
+
+
+
+
+	(void)args;
+
+	return (0);
+}
+
 int	ft_struct_init(t_args *args, char **argv)
 {
-	
-	
+	t_stack	*stack;
+	int		i;
+	int		current;
 
+	stack = NULL;
+	args->stack = stack;
+	i = 0;
+	while (argv[i])
+	{
+		current = ft_add_to_stack(args, argv[i++]);
+		if (current == -1)
+			return (2); //TODO
+	}
 	return (0);
 }
 
@@ -49,16 +89,7 @@ int	main(int argc, char **argv)
 		return (1);
 	
 	if (ft_struct_init(&args, argv))
-		return (ft_error(1)); //TODO change to msg error
-	
-
-
-
-
-
-
-
-
+		return (1); //TODO change to msg error
 
 	return (0);
 }
