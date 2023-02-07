@@ -6,11 +6,24 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:45:13 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/06 20:06:27 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 12:07:50 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_stacksize(t_stack *stack)
+{
+	int	count;
+
+	count = 0;
+	while (stack)
+	{
+		stack = stack->next;
+		count++;
+	}
+	return (count);
+}
 
 t_stack	*ft_stacknew(int content)
 {
@@ -34,7 +47,6 @@ t_stack	*ft_stacklast(t_stack *stack)
 	}
 	return (stack);
 }
-
 
 void	ft_stackadd_back(t_stack **lst, t_stack *new)
 {

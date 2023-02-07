@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:45:24 by ezanotti          #+#    #+#              #
-#    Updated: 2023/02/06 20:04:05 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/02/07 12:57:43 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ S_SRC	= main.c					\
 		${D_PRT}ft_printf.c			\
 		${D_PRT}ft_printf_utils.c	\
 		${D_UTILS}ft_stack_utils.c	\
-
-
+		${D_UTILS}ft_free.c			\
+		${D_UTILS}ft_sort_int_tab.c
 
 S_TMP	= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC	= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -60,7 +60,7 @@ ${D_OBJS}%.o: %.c	${D_INC}push_swap.h Makefile
 ${NAME}:ascii lib ${O_SRC}
 		@${PRINT} "${GREEN}${SUPPR}Creating ${NAME}'s objects : DONE\n"
 		@${PRINT} "${YELLOW}Compiling ${NAME}...${DEFAULT}"
-		@${CC} ${O_SRC} -o ${NAME} ${LIBFT}
+		@${CC} -fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT}
 		@${PRINT} "${GREEN}${SUPPR}Compiling ${NAME} : DONE ${DEFAULT}\n\n"
 
 lib:
