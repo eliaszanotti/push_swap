@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 15:13:56 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:16:51 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,123 +14,96 @@
 
 #include <stdio.h>
 
-int	*ft_get_tab(t_args *args)
+static int	ft_error(int error_code)
 {
-	t_stack	*stack;
-	int		*tab;
-	int		i;
-
-	tab = malloc(sizeof(int) * ft_stacksize(args->stack));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	stack = args->stack;
-	while (stack)
-	{
-		tab[i++] = stack->content;
-		stack = stack->next;
-	}
-	return (tab);
-}
-
-int	ft_replace_index(t_args *args)
-{
-	t_stack	*stack;
-	int		*tab;
-	int		size;
-	int		i;
-
-	tab = ft_get_tab(args);
-	if (!tab)
-		return (1);
-	size = ft_stacksize(args->stack);
-	ft_sort_int_tab(tab, size);
-	stack = args->stack;
-	while (stack)
-	{
-		i = 0;
-		while (i < size && tab[i] != stack->content)
-			i++;
-		if (tab[i] == stack->content)
-			stack->content = i;
-		stack = stack->next;
-	}
-	free(tab);
-	return (0);
-}
-
-int	ft_is_valid_digit(char *current)
-{
-	while (*current)
-	{
-		if ((*current < '0' || *current > '9') && *current != '-')
-			return (0);
-		current++;
-	}
+	if (error_code)
+		write(1, "Error\n", 6);
 	return (1);
 }
 
-int	ft_add_to_stack(t_args *args, char *current)
-{
-	t_stack		*new;
-	long int	atoi;
-
-	if (!ft_is_valid_digit(current))
-		return (1);
-	atoi = ft_atoi_secure(current);
-	if (atoi == 2147483648)
-		return (1);
-	
-
-
-
-	new = ft_stacknew(atoi);
-	if (!new)
-		return (1); //TODO
-	ft_stackadd_back(&args->stack, new);
-	return (0);
-}
-
-int	ft_struct_init(t_args *args, char **argv)
-{
-	char	**splited;
-	t_stack	*stack;
-	int		i;
-	int		j;
-
-	stack = NULL;
-	args->stack = stack;
-	i = 0;
-	while (argv[++i])
-	{
-		splited = ft_split(argv[i], ' ');
-		if (!splited)
-			return (1); //TODO
-		j = -1;
-		while (splited[++j])
-			if (ft_add_to_stack(args, splited[j]))
-				return (ft_free_str(splited), 1); //TODO
-		ft_free_str(splited);
-	}
-	return (0);
-}
-
-int	ft_check_double(t_args *args)
+void	ft_log(t_args *args)
 {
 	t_stack	*stack;
 	t_stack	*temp;
 
 	stack = args->stack;
-	temp = args->stack;
+	temp = args->tmp;
+	while (temp && stack)
+	{
+		printf("[%d]\t[%d]\n", stack->content, temp->content);
+		stack = stack->next;
+		temp = temp->next;
+	}
+	while (temp)
+	{
+		printf("[ ]\t[%d]\n", temp->content);
+		temp = temp->next;
+	}
 	while (stack)
 	{
-		temp = stack->next;
-		while (temp && stack->content != temp->content)
-			temp = temp->next;
-		if (temp && (stack->content == temp->content))
-			return (1);
+		printf("[%d]\t[ ]\n", stack->content);
 		stack = stack->next;
 	}
+}
+
+int	ft_push(t_stack **src, t_stack **dest, char *instruction)
+{
+	t_stack	*current;
+
+	current = *src;
+	if (!current)
+		return (0);
+	*src = current->next;
+	current->next = NULL;
+	ft_stackadd_front(dest, current);
+	write(1, instruction, 2);
+	write(1, "\n", 1);
+	return (0);
+}
+
+int	ft_rotate(t_stack **stack, char *instruction)
+{
+	t_stack	*current;
+
+	current = *stack;
+	*stack = current->next;
+	current->next = NULL;
+	ft_stackadd_back(stack, current);
+	write(1, instruction, 2);
+	write(1, "\n", 1);
+	return (0);
+}
+
+int	ft_radix_sort(t_args *args)
+{
+	t_stack	*temp;
+
+	temp = NULL;
+	args->tmp = temp;
+	
+	ft_log(args);
+	ft_push(&args->stack, &args->tmp, "pb");
+	ft_log(args);
+	ft_rotate(&args->stack, "ra");
+	ft_log(args);
+
+
+	return (0);
+}
+
+int	ft_sort_stack(t_args *args)
+{
+	int	size;
+
+	size = ft_stacksize(args->stack);
+	printf("size=  %d\n", size);
+	if (size > 5)
+	{
+		if (ft_radix_sort(args))
+			return (1);
+	}
+	
+
 	return (0);
 }
 
@@ -141,10 +114,12 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	if (ft_struct_init(&args, argv))
-		return (1); //TODO change to msg error
+		return (ft_error(1));
 	if (ft_check_double(&args))
-		return (1);
+		return (ft_error(1));
 	if (ft_replace_index(&args))
+		return (ft_error(1));
+	if (ft_sort_stack(&args))
 		return (1);
 
 	return (0);

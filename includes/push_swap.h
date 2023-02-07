@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 14:40:36 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:59:04 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,23 @@ typedef struct s_args
 {
 	t_stack	*stack;
 	t_stack	*tmp;
-
-
 }	t_args;
+
+//	PARSING
+int	ft_is_valid_digit(char *current);
+int	ft_check_double(t_args *args);
+int	ft_replace_index(t_args *args);
+int	ft_struct_init(t_args *args, char **argv);
+
+
+
+
+
 
 int			ft_stacksize(t_stack *stack);
 t_stack		*ft_stacknew(int content);
 t_stack		*ft_stacklast(t_stack *stack);
+void		ft_stackadd_front(t_stack **stack, t_stack *new);
 void		ft_stackadd_back(t_stack **lst, t_stack *new);
 void		ft_free_str(char **str);
 void		ft_sort_int_tab(int *tab, int size);

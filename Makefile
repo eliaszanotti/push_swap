@@ -6,17 +6,22 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:45:24 by ezanotti          #+#    #+#              #
-#    Updated: 2023/02/07 14:34:07 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/02/07 15:32:02 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-S_SRC	= main.c					\
-		${D_PRT}ft_printf.c			\
-		${D_PRT}ft_printf_utils.c	\
-		${D_UTILS}ft_stack_utils.c	\
-		${D_UTILS}ft_free.c			\
-		${D_UTILS}ft_sort_int_tab.c	\
-		${D_UTILS}ft_atoi_secure.c
+S_SRC	= main.c						\
+		${D_PRT}ft_printf.c				\
+		${D_PRT}ft_printf_utils.c		\
+		${D_UTILS}ft_stack_utils.c		\
+		${D_UTILS}ft_free.c				\
+		${D_UTILS}ft_sort_int_tab.c		\
+		${D_UTILS}ft_atoi_secure.c		\
+		${D_PARSE}ft_check_parsing.c	\
+		${D_PARSE}ft_replace_index.c	\
+		${D_PARSE}ft_struct_init.c		\
+
+
 
 S_TMP	= ${addprefix ${D_SRC}, ${S_SRC}}
 O_SRC	= $(patsubst %.c, ${D_OBJS}%.o, $(S_TMP))
@@ -40,6 +45,7 @@ D_INC	= includes/
 D_LIB	= libft/
 D_UTILS	= utils/
 D_PRT	= printf/
+D_PARSE	= parsing/
 D_SRC	= srcs/
 
 # COLORS

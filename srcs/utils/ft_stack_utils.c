@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 19:45:13 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 12:07:50 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:58:45 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,15 @@ t_stack	*ft_stacklast(t_stack *stack)
 		stack = stack->next;
 	}
 	return (stack);
+}
+
+void	ft_stackadd_front(t_stack **stack, t_stack *new)
+{
+	if (!stack)
+		return ;
+	if (*stack)
+		new->next = *stack;
+	*stack = new;
 }
 
 void	ft_stackadd_back(t_stack **lst, t_stack *new)
