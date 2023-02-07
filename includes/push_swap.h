@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 13:01:37 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:40:36 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@ typedef struct s_args
 
 }	t_args;
 
-int	ft_stacksize(t_stack *stack);
-t_stack	*ft_stacknew(int content);
-t_stack	*ft_stacklast(t_stack *stack);
-void	ft_stackadd_back(t_stack **lst, t_stack *new);
-void	ft_free_str(char **str);
-void	ft_sort_int_tab(int *tab, int size);
+int			ft_stacksize(t_stack *stack);
+t_stack		*ft_stacknew(int content);
+t_stack		*ft_stacklast(t_stack *stack);
+void		ft_stackadd_back(t_stack **lst, t_stack *new);
+void		ft_free_str(char **str);
+void		ft_sort_int_tab(int *tab, int size);
+long int	ft_atoi_secure(const char *str);
 
 /*//ft_checker.c
 int		ft_int_checker(char **argv);
