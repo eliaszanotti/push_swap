@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 18:16:51 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:01:27 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,38 @@ int	ft_rotate(t_stack **stack, char *instruction)
 	return (0);
 }
 
+int	ft_is_sorted(t_stack *stack)
+{
+	while (stack)
+	{
+		if (stack->next && stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 int	ft_radix_sort(t_args *args)
 {
-	t_stack	*temp;
+	int	bit;
+	int	size;
 
-	temp = NULL;
-	args->tmp = temp;
-	
-	ft_log(args);
-	ft_push(&args->stack, &args->tmp, "pb");
-	ft_log(args);
-	ft_rotate(&args->stack, "ra");
-	ft_log(args);
-
-
+	bit = 1;
+	while (!ft_is_sorted(args->stack))
+	{
+		size = ft_stacksize(args->stack);
+		while (size-- > 0)
+		{
+			if ((args->stack->content & bit) == 0)
+				ft_push(&args->stack, &args->tmp, "pb");
+			else
+				ft_rotate(&args->stack, "ra");
+		}
+		size = ft_stacksize(args->tmp);
+		while (size-- > 0)
+			ft_push(&args->tmp, &args->stack, "pa");
+		bit *= 2;
+	}
 	return (0);
 }
 
@@ -96,14 +114,8 @@ int	ft_sort_stack(t_args *args)
 	int	size;
 
 	size = ft_stacksize(args->stack);
-	printf("size=  %d\n", size);
-	if (size > 5)
-	{
-		if (ft_radix_sort(args))
-			return (1);
-	}
-	
-
+	if (size > 5 && ft_radix_sort(args))
+		return (1);
 	return (0);
 }
 
@@ -121,6 +133,6 @@ int	main(int argc, char **argv)
 		return (ft_error(1));
 	if (ft_sort_stack(&args))
 		return (1);
-
+	ft_free_args(&args);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:25:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 15:48:30 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:52:12 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_struct_init(t_args *args, char **argv)
 
 	stack = NULL;
 	args->stack = stack;
+	args->tmp = NULL;
 	i = 0;
 	while (argv[++i])
 	{

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 17:59:04 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 18:59:49 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_stack		*ft_stacklast(t_stack *stack);
 void		ft_stackadd_front(t_stack **stack, t_stack *new);
 void		ft_stackadd_back(t_stack **lst, t_stack *new);
 void		ft_free_str(char **str);
+void		ft_free_args(t_args *args);
 void		ft_sort_int_tab(int *tab, int size);
 long int	ft_atoi_secure(const char *str);
 
