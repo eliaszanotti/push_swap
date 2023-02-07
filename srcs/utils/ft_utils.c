@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 18:16:33 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/11/22 13:34:27 by ezanotti         ###   ########lyon.fr   */
+/*   Created: 2023/02/07 19:07:08 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/02/07 19:07:26 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H 
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-# include <limits.h>
-
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-int	ft_putnbr(int n);
-int	ft_printaddress(void *address);
-int	ft_base(char *base, long int nbr);
-
-int	ft_printf(const char *s, ...);
-
-#endif
+int	ft_is_sorted(t_stack *stack)
+{
+	while (stack)
+	{
+		if (stack->next && stack->content > stack->next->content)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}

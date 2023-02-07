@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 18:59:49 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:23:02 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
-# include "ft_printf.h"
-
-# include <stddef.h>
-# include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -32,45 +28,38 @@ typedef struct s_args
 }	t_args;
 
 //	PARSING
-int	ft_is_valid_digit(char *current);
-int	ft_check_double(t_args *args);
-int	ft_replace_index(t_args *args);
-int	ft_struct_init(t_args *args, char **argv);
+//	ft_check_parsing.c
+int			ft_is_valid_digit(char *current);
+int			ft_check_double(t_args *args);
+//	ft_replace_index.c
+int			ft_replace_index(t_args *args);
+//	ft_struct_init.c
+int			ft_struct_init(t_args *args, char **argv);
 
+//	SORT
+//	ft_radix_sort.c
+int			ft_radix_sort(t_args *args);
+//	ft_sort_stack.c
+int			ft_sort_stack(t_args *args);
 
-
-
-
-
+//	UTILS
+//	ft_atoi_secure.c
+long int	ft_atoi_secure(const char *str);
+//	ft_free.c
+void		ft_free_str(char **str);
+void		ft_free_args(t_args *args);
+//	ft_instructions.c
+int			ft_push(t_stack **src, t_stack **dest, char *instruction);
+int			ft_rotate(t_stack **stack, char *instruction);
+//	ft_sort_int_tab.c
+void		ft_sort_int_tab(int *tab, int size);
+//	ft_stack_utils.c
 int			ft_stacksize(t_stack *stack);
 t_stack		*ft_stacknew(int content);
 t_stack		*ft_stacklast(t_stack *stack);
 void		ft_stackadd_front(t_stack **stack, t_stack *new);
 void		ft_stackadd_back(t_stack **lst, t_stack *new);
-void		ft_free_str(char **str);
-void		ft_free_args(t_args *args);
-void		ft_sort_int_tab(int *tab, int size);
-long int	ft_atoi_secure(const char *str);
-
-/*//ft_checker.c
-int		ft_int_checker(char **argv);
-int		ft_unique_checker(t_stack *stack);
-int		ft_is_sorted(t_stack *stack);
-//ft_error.c
-int		ft_error(int error_code);
-//ft_free.c
-void	*ft_free_stack(t_stack *stack);
-void	ft_free_argv(char **argv);
-//ft_instructions.c
-void	ft_push_a(t_stack *stack);
-void	ft_push_b(t_stack *stack);
-void	ft_reverse_a(t_stack *stack);
-//ft_parsing.c
-t_stack	*ft_init_stack(char **argv);
-void	ft_replace_index(t_stack *stack);
-//ft_sort.c
-void	ft_sort(t_stack *stack);
-
-void	ft_log(t_stack *stack);*/
+//	ft_utils.c
+int			ft_is_sorted(t_stack *stack);
 
 #endif

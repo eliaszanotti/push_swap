@@ -5,39 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 16:40:27 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/28 17:33:07 by elias            ###   ########.fr       */
+/*   Created: 2023/02/07 19:06:08 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/02/07 19:06:39 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-void	ft_push_a(t_stack *stack)
+int	ft_push(t_stack **src, t_stack **dest, char *instruction)
 {
-	stack->tab[stack->size + 1] = stack->tab_temp[stack->size_temp];
-	stack->size++;
-	stack->size_temp--;
-	ft_printf("pa\n");
+	t_stack	*current;
+
+	current = *src;
+	if (!current)
+		return (0);
+	*src = current->next;
+	current->next = NULL;
+	ft_stackadd_front(dest, current);
+	write(1, instruction, 2);
+	write(1, "\n", 1);
+	return (0);
 }
 
-void	ft_push_b(t_stack *stack)
+int	ft_rotate(t_stack **stack, char *instruction)
 {
-	stack->tab_temp[stack->size_temp + 1] = stack->tab[stack->size];
-	stack->size--;
-	stack->size_temp++;
-	ft_printf("pb\n");
-}
+	t_stack	*current;
 
-void	ft_reverse_a(t_stack *stack)
-{
-	int	last;
-	int	i;
-
-	last = stack->tab[stack->size];
-	i = stack->size + 1;
-	while (--i > 0)
-		stack->tab[i] = stack->tab[i - 1];
-	stack->tab[i] = last;
-	ft_printf("ra\n");
+	current = *stack;
+	*stack = current->next;
+	current->next = NULL;
+	ft_stackadd_back(stack, current);
+	write(1, instruction, 2);
+	write(1, "\n", 1);
+	return (0);
 }

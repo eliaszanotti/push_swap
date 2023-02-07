@@ -1,45 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   ft_radix_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 17:28:28 by ezanotti          #+#    #+#             */
-/*   Updated: 2022/12/22 15:13:22 by elias            ###   ########.fr       */
+/*   Created: 2023/02/07 19:08:03 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/02/07 19:08:24 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort(t_stack *stack)
+int	ft_radix_sort(t_args *args)
 {
-	int	i;
+	int	bit;
+	int	size;
 
-	stack->bit = 1;
-	while (!ft_is_sorted(stack))
+	bit = 1;
+	while (!ft_is_sorted(args->stack))
 	{
-		i = stack->size;
-		while (i-- >= 0)
+		size = ft_stacksize(args->stack);
+		while (size-- > 0)
 		{
-			if ((stack->tab[stack->size] & stack->bit) == 0)
-				ft_push_b(stack);
+			if ((args->stack->content & bit) == 0)
+				ft_push(&args->stack, &args->tmp, "pb");
 			else
-				ft_reverse_a(stack);
+				ft_rotate(&args->stack, "ra");
 		}
-		i = stack->size_temp;
-		while (i-- >= 0)
-			ft_push_a(stack);
-		stack->bit *= 2;
+		size = ft_stacksize(args->tmp);
+		while (size-- > 0)
+			ft_push(&args->tmp, &args->stack, "pa");
+		bit *= 2;
 	}
+	return (0);
 }
-
-/*void	ft_get_sort(stack *stack)
-{
-	if (stack->size > 3)
-		ft_sort(stack);	
-	else
-		ft_sort_three(stack);
-
-
-}*/

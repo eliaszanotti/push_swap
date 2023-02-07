@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_sort_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elias <zanotti.elias@gmail.com>            +#+  +:+       +#+        */
+/*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/28 18:01:09 by elias             #+#    #+#             */
-/*   Updated: 2023/02/07 19:00:12 by ezanotti         ###   ########.fr       */
+/*   Created: 2023/02/07 19:08:45 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/02/07 19:08:59 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_free_argv(char **argv)
+int	ft_sort_stack(t_args *args)
 {
-	int	i;
+	int	size;
 
-	i = 0;
-	if (argv)
-	{
-		while (argv[i])
-			free(argv[i++]);
-		free(argv);
-	}
+	size = ft_stacksize(args->stack);
+	if (size > 5 && ft_radix_sort(args))
+		return (1);
+	return (0);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 19:01:27 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:21:47 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,79 +44,6 @@ void	ft_log(t_args *args)
 		printf("[%d]\t[ ]\n", stack->content);
 		stack = stack->next;
 	}
-}
-
-int	ft_push(t_stack **src, t_stack **dest, char *instruction)
-{
-	t_stack	*current;
-
-	current = *src;
-	if (!current)
-		return (0);
-	*src = current->next;
-	current->next = NULL;
-	ft_stackadd_front(dest, current);
-	write(1, instruction, 2);
-	write(1, "\n", 1);
-	return (0);
-}
-
-int	ft_rotate(t_stack **stack, char *instruction)
-{
-	t_stack	*current;
-
-	current = *stack;
-	*stack = current->next;
-	current->next = NULL;
-	ft_stackadd_back(stack, current);
-	write(1, instruction, 2);
-	write(1, "\n", 1);
-	return (0);
-}
-
-int	ft_is_sorted(t_stack *stack)
-{
-	while (stack)
-	{
-		if (stack->next && stack->content > stack->next->content)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
-
-int	ft_radix_sort(t_args *args)
-{
-	int	bit;
-	int	size;
-
-	bit = 1;
-	while (!ft_is_sorted(args->stack))
-	{
-		size = ft_stacksize(args->stack);
-		while (size-- > 0)
-		{
-			if ((args->stack->content & bit) == 0)
-				ft_push(&args->stack, &args->tmp, "pb");
-			else
-				ft_rotate(&args->stack, "ra");
-		}
-		size = ft_stacksize(args->tmp);
-		while (size-- > 0)
-			ft_push(&args->tmp, &args->stack, "pa");
-		bit *= 2;
-	}
-	return (0);
-}
-
-int	ft_sort_stack(t_args *args)
-{
-	int	size;
-
-	size = ft_stacksize(args->stack);
-	if (size > 5 && ft_radix_sort(args))
-		return (1);
-	return (0);
 }
 
 int	main(int argc, char **argv)
