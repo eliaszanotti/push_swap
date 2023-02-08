@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:45:24 by ezanotti          #+#    #+#              #
-#    Updated: 2023/02/08 12:10:00 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/02/08 14:51:29 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ S_SRC	= main.c						\
 		${D_PARSE}ft_replace_index.c	\
 		${D_PARSE}ft_struct_init.c		\
 		${D_SORT}ft_radix_sort.c		\
+		${D_SORT}ft_sort_five.c			\
+		${D_SORT}ft_sort_four.c			\
 		${D_SORT}ft_sort_stack.c		\
+		${D_SORT}ft_sort_three.c		\
 		${D_UTILS}ft_atoi_secure.c		\
 		${D_UTILS}ft_free.c				\
 		${D_UTILS}ft_instructions.c		\

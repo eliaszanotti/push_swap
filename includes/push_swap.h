@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/08 13:54:12 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/08 14:50:30 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,14 @@ int			ft_struct_init(t_args *args, char **argv);
 //	SORT
 //	ft_radix_sort.c
 int			ft_radix_sort(t_args *args);
+//	ft_sort_five.c
+int			ft_sort_five(t_args *args);
+//	ft_sort_four.c
+int			ft_sort_four(t_args *args);
 //	ft_sort_stack.c
 int			ft_sort_stack(t_args *args);
+//	ft_sort_three.c
+int			ft_sort_three(t_args *args);
 
 //	UTILS
 //	ft_atoi_secure.c
@@ -63,8 +69,5 @@ void		ft_stackadd_front(t_stack **stack, t_stack *new);
 void		ft_stackadd_back(t_stack **lst, t_stack *new);
 //	ft_utils.c
 int			ft_is_sorted(t_stack *stack);
-
-void	ft_log(t_args *args);
-
 
 #endif

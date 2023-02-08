@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_stack.c                                    :+:      :+:    :+:   */
+/*   ft_sort_five.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 19:08:45 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/08 14:51:54 by ezanotti         ###   ########.fr       */
+/*   Created: 2023/02/08 14:48:02 by ezanotti          #+#    #+#             */
+/*   Updated: 2023/02/08 14:48:23 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sort_stack(t_args *args)
+int	ft_sort_five(t_args *args)
 {
 	int	size;
+	int	i;
+	int	first_a;
+	int	first_b;
 
 	size = ft_stacksize(args->stack);
-	if (ft_is_sorted(args->stack))
-		return (0);
-	if (size > 5 && ft_radix_sort(args))
-		return (1);
-	if (size == 5 && ft_sort_five(args))
-		return (1);
-	if (size == 4 && ft_sort_four(args))
-		return (1);
-	if (size == 3 && ft_sort_three(args))
-		return (1);
-	if (size == 2)
-		ft_swap(&args->stack, "sa");
+	i = -1;
+	while (++i < size)
+	{
+		first_a = args->stack->content;
+		if (first_a < 2)
+			ft_push(&args->stack, &args->tmp, "pb");
+		else
+			ft_rotate(&args->stack, "ra");
+	}
+	first_b = args->tmp->content;
+	if (first_b == 0)
+		ft_swap(&args->tmp, "sb");
+	ft_sort_three(args);
+	while (ft_stacksize(args->tmp))
+		ft_push(&args->tmp, &args->stack, "pa");
 	return (0);
 }
