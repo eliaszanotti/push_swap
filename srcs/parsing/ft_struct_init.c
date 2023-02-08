@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:25:26 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 18:52:12 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/08 15:36:38 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_struct_init(t_args *args, char **argv)
 		j = -1;
 		while (splited[++j])
 			if (ft_add_to_stack(args, splited[j]))
-				return (ft_free_str(splited), 1);
+				return (ft_free_args(args), ft_free_str(splited), 1);
 		ft_free_str(splited);
 	}
 	return (0);

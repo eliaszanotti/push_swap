@@ -6,7 +6,7 @@
 #    By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/06 15:45:24 by ezanotti          #+#    #+#              #
-#    Updated: 2023/02/08 14:51:29 by ezanotti         ###   ########.fr        #
+#    Updated: 2023/02/08 15:44:49 by ezanotti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,7 @@ ${D_OBJS}%.o: %.c	${D_INC}push_swap.h Makefile
 ${NAME}:ascii lib ${O_SRC}
 		@${PRINT} "${GREEN}${SUPPR}Creating ${NAME}'s objects : DONE\n"
 		@${PRINT} "${YELLOW}Compiling ${NAME}...${DEFAULT}"
-		@${CC} -fsanitize=address ${O_SRC} -o ${NAME} ${LIBFT}
+		@${CC} ${O_SRC} -o ${NAME} ${LIBFT}
 		@${PRINT} "${GREEN}${SUPPR}Compiling ${NAME} : DONE ${DEFAULT}\n\n"
 
 lib:
