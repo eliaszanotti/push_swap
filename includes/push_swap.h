@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 13:24:58 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 19:23:02 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/08 13:54:12 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ long int	ft_atoi_secure(const char *str);
 void		ft_free_str(char **str);
 void		ft_free_args(t_args *args);
 //	ft_instructions.c
+int			ft_swap(t_stack **src, char *instruction);
 int			ft_push(t_stack **src, t_stack **dest, char *instruction);
+int			ft_reverse_rotate(t_stack **stack, char *instruction);
 int			ft_rotate(t_stack **stack, char *instruction);
 //	ft_sort_int_tab.c
 void		ft_sort_int_tab(int *tab, int size);
@@ -61,5 +63,8 @@ void		ft_stackadd_front(t_stack **stack, t_stack *new);
 void		ft_stackadd_back(t_stack **lst, t_stack *new);
 //	ft_utils.c
 int			ft_is_sorted(t_stack *stack);
+
+void	ft_log(t_args *args);
+
 
 #endif

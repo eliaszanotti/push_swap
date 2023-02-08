@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 19:21:47 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:59:40 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ int	main(int argc, char **argv)
 		return (ft_error(1));
 	if (ft_replace_index(&args))
 		return (ft_error(1));
+
+	
+
+
 	if (ft_sort_stack(&args))
 		return (1);
 	ft_free_args(&args);
