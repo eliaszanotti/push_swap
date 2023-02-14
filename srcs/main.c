@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/09 15:17:57 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:39:50 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_error(int error_code)
 {
 	if (error_code)
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 	return (1);
 }
 

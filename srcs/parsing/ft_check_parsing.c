@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 15:25:59 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/07 15:28:13 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:37:07 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 int	ft_is_valid_digit(char *current)
 {
+	if (*current == '-' && ft_strlen(current) == 1)
+		return (0);
+	if ((*current < '0' || *current > '9') && *current != '-')
+		return (0);
+	current++;
 	while (*current)
 	{
-		if ((*current < '0' || *current > '9') && *current != '-')
+		if (*current < '0' || *current > '9')
 			return (0);
 		current++;
 	}
