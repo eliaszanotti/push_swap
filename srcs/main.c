@@ -6,7 +6,7 @@
 /*   By: ezanotti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 18:34:30 by ezanotti          #+#    #+#             */
-/*   Updated: 2023/02/14 17:39:50 by ezanotti         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:40:16 by ezanotti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (1);
+	if (!argv[1][0])
+		return (ft_error(1));
 	if (ft_struct_init(&args, argv))
 		return (ft_error(1));
 	if (ft_check_double(&args))
